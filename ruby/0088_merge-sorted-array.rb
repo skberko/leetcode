@@ -46,26 +46,18 @@
 # @param {Integer} n
 # @return {Void} Do not return anything, modify nums1 in-place instead.
 def merge(nums1, m, nums2, n)
-  # Index used to start merging to the _end_ of num1
-  i = m + n - 1
-  # End of the actual, non-zero numbers in nums1
-  i1 = m - 1
-  # End of nums2
-  i2 = n - 1
+  i = m + n - 1  # Last index of nums1
+  i1 = m - 1     # Last non-zero index of nums1
+  i2 = n - 1     # Last index of nums2
 
-  while i >= 0
-    break if i2 < 0
-
-    if nums1[i1] >= nums2[i2]
+  while i2 >= 0
+    if i1 >= 0 && nums1[i1] > nums2[i2]
       nums1[i] = nums1[i1]
-      
       i1 -= 1
     else
       nums1[i] = nums2[i2]
-      
       i2 -= 1
     end
-
     i -= 1
   end
 end
